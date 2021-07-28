@@ -1,0 +1,183 @@
+CREATE TABLE user
+(
+   user_id int primary key AUTO_INCREMENT,
+   name varchar(100),
+   phone_no int,
+   email varchar(100),
+   address varchar(100),
+   reg_date varchar(50),
+   password varchar(100),
+   upload_photo varchar(200)
+);
+
+
+ALTER TABLE user AUTO_INCREMENT = 101;
+
+Alter Table user Modify column phone_no bigint;
+
+
+insert into
+user(name, phone_no, email, address, reg_date, password, upload_photo)
+values('Ankit',4578008234,'ankit@gmail.com','noida','03-jan-2021','ankit','img.jpg');
+
+insert into
+user(name, phone_no, email, address, reg_date, password, upload_photo)
+values('Rahul',9586234712,'rahul@gmail.com','banglore','03-mar-2021','rahul','img1.jpg');
+
+insert into
+user(name, phone_no, email, address, reg_date, password, upload_photo)
+values('gouthami',8524379162,'gouthami@gmail.com','anantapur','03-feb-2021','gouthami','img2.jpg');
+
+insert into
+user(name, phone_no, email, address, reg_date, password, upload_photo)
+values('iswarya',9256279162,'iswarya@gmail.com','nellore','22-feb-2021','iswarya','img3.jpg');
+
+insert into
+user(name, phone_no, email, address, reg_date, password, upload_photo)
+values('harshitha',7456279162,'harshitha@gmail.com','vijayawada','22-jan-2020','harshitha','img4.jpg');
+
+commit;
+
+
+create table feedback(user_id int references user1,
+name varchar(100),
+email varchar(100),
+f_id int primary key AUTO_INCREMENT,
+feedback varchar(100)
+);
+
+ALTER TABLE feedback AUTO_INCREMENT = 1;
+
+insert into feedback(user_id,name,email,feedback)values(101,'ankit','ankit@gmail.com','good');
+
+insert into feedback(user_id,name,email,feedback)values(105,'harshitha','harshitha@gmail.com','good');
+
+commit;
+
+select * from feedback;
+
+
+create table course ( course_id int primary key AUTO_INCREMENT, 
+c_name varchar(100),
+c_desp varchar(100),
+c_fees varchar(100),
+c_resource varchar(100)
+);
+
+select * from course;
+
+
+ALTER TABLE course AUTO_INCREMENT = 111;
+
+insert into course( c_name, c_desp , c_fees , c_resource ) values ('JAVA','Programminglanguage', 299, 'video.mp4');
+
+insert into course( c_name, c_desp , c_fees , c_resource ) values ('CProgramming','Programming language',199, 'cprogram.mp4');
+
+insert into course( c_name, c_desp , c_fees , c_resource ) values ('C++Programming','Programming language',199, 'c++program.mp4');
+
+commit;
+
+create table admin ( admin_id int primary key AUTO_INCREMENT,
+ name varchar(100),
+ email varchar(100), 
+ password varchar(100)
+ );
+
+ALTER TABLE admin AUTO_INCREMENT = 1;
+  
+ insert into admin(name, email, password) values
+('rahul','rahul@gmail.com','pass');
+
+insert into admin(name, email, password) values
+('ankit','ankit@gmail.com','pass');
+
+insert into admin(name, email, password) values
+('gowthami','gowthami@gmail.com','pass');
+
+insert into admin(name, email, password) values
+('aishwarya','aishwarya@gmail.com','pass');
+
+insert into admin(name, email, password) values
+('harshitha','harshitha@gmail.com','pass');
+
+commit;
+
+select * from admin;
+
+
+
+create table contact(
+    user_id int, 
+    name varchar(30), 
+    email varchar(20), 
+    phone_no bigint, 
+    message varchar(20), 
+    contact_id int primary key AUTO_INCREMENT,
+    constraint anotherfk foreign key(user_id) references user(user_id)
+);
+
+ALTER TABLE contact AUTO_INCREMENT = 1;
+
+
+insert into contact(user_id, name, email, phone_no, message) values (101, 'Ankit', 'ankit@gmail.com',
+1234, 'Message');
+insert into contact(user_id, name, email, phone_no, message) values(102, 'Rahul', 'rahul@gmail.com',
+1235, 'Message');
+insert into contact(user_id, name, email, phone_no, message) values(103, 'Gouthami',
+'Gouthami@gmail.com', 1236, 'Message');
+insert into contact(user_id, name, email, phone_no, message) values(104, 'Ishwarya',
+'Ishwarya@gmail.com', 1237, 'Message');
+insert into contact(user_id, name, email, phone_no, message) values(105, 'Harshitha',
+'Harshitha@gmail.com', 1238, 'Message');
+
+commit;
+
+
+create table contact(
+    user_id int, 
+    name varchar(30), 
+    email varchar(20), 
+    phone_no bigint, 
+    message varchar(20), 
+    contact_id int primary key AUTO_INCREMENT,
+    constraint anotherfk foreign key(user_id) references user(user_id)
+);
+
+ALTER TABLE contact AUTO_INCREMENT = 1;
+
+
+insert into contact(user_id, name, email, phone_no, message) values (101, 'Ankit', 'ankit@gmail.com',
+1234, 'Message');
+insert into contact(user_id, name, email, phone_no, message) values(102, 'Rahul', 'rahul@gmail.com',
+1235, 'Message');
+insert into contact(user_id, name, email, phone_no, message) values(103, 'Gouthami',
+'Gouthami@gmail.com', 1236, 'Message');
+insert into contact(user_id, name, email, phone_no, message) values(104, 'Ishwarya',
+'Ishwarya@gmail.com', 1237, 'Message');
+insert into contact(user_id, name, email, phone_no, message) values(105, 'Harshitha',
+'Harshitha@gmail.com', 1238, 'Message');
+
+commit;
+
+
+create table enrollment(enroll_id int primary key AUTO_INCREMENT,
+user_id int,
+course_id int,
+name varchar(100),
+c_name varchar(100),
+c_desp varchar(100),
+c_fees varchar(100),
+c_resource varchar(100),
+constraint abc foreign key(user_id) references user(user_id),
+constraint def foreign key(course_id) references course(course_id)
+);
+
+ALTER TABLE enrollment AUTO_INCREMENT = 501;
+
+commit;
+
+select * from enrollment;
+
+
+
+
