@@ -16,7 +16,7 @@
 }
 </style>
 </head>
-<body style="text-align: center">
+<body style="text-align: center; padding-top : 60px; background-color : #eebb99">
 <%
 	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
 	response.setHeader("Pragma", "no-cache"); 
@@ -27,7 +27,9 @@
 	}
 	
 %>
-My Enrollments
+<a href="logout" style="position: absolute; right:50px"><input type="submit" value="Logout"/></a>
+
+My Enrollments<br/><br/>
 <table width="100%" border="1" style="margin-bottom:80px">
     <thead style="background-color : cyan">
     <tr>
@@ -64,7 +66,7 @@ My Enrollments
     %>
     </tbody>
 </table>
-Enroll More below:
+Enroll More below: <br/><br/>
 <form action="enrolluser">
 <table width="100%" border="1">
     <thead style="background-color : cyan">
@@ -96,6 +98,7 @@ Enroll More below:
     %>
     </tbody>
 </table>
+<br/><br/>
 Enter the course ID you want to enroll <input type="number" name="courseId" required/>
 <input type="submit" value = "Submit"/>
 </form>

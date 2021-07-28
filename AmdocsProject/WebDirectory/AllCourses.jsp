@@ -15,17 +15,20 @@
 </style>
 </head>
 
-<body style="text-align:center; padding-top:100px">
+<body style="text-align:center; padding-top:100px; background-color : #eebb99"">
 <% 	
-	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); // for http 1.1. & above
-	response.setHeader("Pragma", "no-cache"); // Http 1.0
-	response.setHeader("Expires", "0"); // Proxies
+	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
+	response.setHeader("Pragma", "no-cache"); 
+	response.setHeader("Expires", "0"); 
 	if(session.getAttribute("admin")==null){
 		response.sendRedirect("AdminLogin.jsp");
 		return;
 	}
 %>
+<a href="logout" style="position: absolute; right:50px"><input type="submit" value="Logout"/></a>
+
 All courses<br/><br/>
+
 <table width="100%" border="1">
     <thead style="background-color : cyan">
     <tr>

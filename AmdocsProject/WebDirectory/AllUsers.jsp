@@ -14,7 +14,7 @@
 }
 </style>
 </head>
-<body style="text-align:center; padding-top:100px">
+<body style="text-align:center; padding-top:100px; background-color : #eebb99"">
 <% 	
 	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
 	response.setHeader("Pragma", "no-cache"); 
@@ -24,6 +24,8 @@
 		return;
 	}
 %>
+<a href="logout" style="position: absolute; right:50px"><input type="submit" value="Logout"/></a>
+
 All Users <br/><br/>
 <table width="100%" border="1">
     <thead style="background-color : cyan">

@@ -1,7 +1,7 @@
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +40,7 @@ public class Contact extends HttpServlet {
 		//Long phone = 1234L;
 		String message = request.getParameter("message");
 		ContactDAO ob = new ContactDAOImpl();
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 		if(ob.connect(userid, name, email, phone, message)){
 //			out.println("<script type=\"text/javascript\">");
 //			out.println("alert('Contact form successfully submitted');");

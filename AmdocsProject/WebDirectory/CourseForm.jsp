@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body style="text-align:center;">
+<body style="text-align:center; background-color : #eebb99"">
 <% 	
 	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
 	response.setHeader("Pragma", "no-cache"); 
@@ -16,6 +16,8 @@
 		return;
 	}
 %>
+<a href="logout" style="position: absolute; right:50px"><input type="submit" value="Logout"/></a>
+
 <form action="addcourse" method="get" style="margin-top:200px">
 	Course Name <input type="text" name="courseName" required/><br/><br/>
 	Course Description <input type="text" name="courseDescription" required/><br/><br/>

@@ -2,7 +2,6 @@ package projectDAO.course.dao.impl;
 
 import projectDAO.course.dao.CourseDAO;
 import projectDAO.course.model.Course;
-import projectDAO.user.model.User;
 import projectDAO.course.util.DBUtil;
 
 import java.sql.*;

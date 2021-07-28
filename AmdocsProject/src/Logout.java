@@ -8,22 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import projectDAO.admin.dao.AdminDAO;
-import projectDAO.admin.dao.impl.AdminDAOImpl;
-import projectDAO.admin.model.Admin;
-
-
 /**
- * Servlet implementation class AdminLogin
+ * Servlet implementation class Logout
  */
-@WebServlet("/adminLogin")
-public class AdminLogin extends HttpServlet {
+@WebServlet("/logout")
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLogin() {
+    public Logout() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +28,20 @@ public class AdminLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		if(session.getAttribute("user")!=null){
+			session.removeAttribute("user");
+			session.invalidate();
+			response.sendRedirect("Login.jsp");
+			return;
+		}
+		if(session.getAttribute("admin")!=null){
+			session.removeAttribute("admin");
+			session.invalidate();
+			response.sendRedirect("AdminLogin.jsp");
+			return;
+		}
+		
 	}
 
 	/**
@@ -41,19 +49,7 @@ public class AdminLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		AdminDAO ob = new AdminDAOImpl();
-		String username = request.getParameter("admin");
-		String password = request.getParameter("password");
-		HttpSession session = request.getSession();
-		Admin ad = ob.adminLogin(username , password);
-		if(ad!=null) {
-			session.setAttribute("admin", ad);
-			response.sendRedirect("AdminHome.jsp");
-		}
-		else {
-			response.sendRedirect("AdminLogin.jsp");
-		}
+		doGet(request, response);
 	}
+
 }
-
-

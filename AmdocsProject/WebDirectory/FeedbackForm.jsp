@@ -19,7 +19,7 @@
 
 </style>
 </head>
-<body style="text-align: center">
+<body style="text-align: center; padding-top:50px; background-color : #eebb99">
 <%
 	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
 	response.setHeader("Pragma", "no-cache"); 
@@ -29,6 +29,8 @@
 		return;
 	}
 %>
+<a href="logout" style="position: absolute; right:50px"><input type="submit" value="Logout"/></a>
+
 	<form action="feed" method="get" style="margin-bottom : 100px">
 	Name <input type="text" name="name" readonly value="<%= ((User)session.getAttribute("user")).getName() %>" /><br/>
 	User ID  <input type="number" name="userid" readonly value="<%= ((User)session.getAttribute("user")).getUser_id() %>"/><br/>
