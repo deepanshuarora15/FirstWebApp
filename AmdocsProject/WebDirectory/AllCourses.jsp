@@ -7,15 +7,27 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>All Courses</title>
+<style>
+
+ tr:nth-child(even) {
+            background-color: Lightgreen;
+}
+</style>
 </head>
 
-
-
-<body>
-
-All courses<br/>
-<table width="60%" border="1">
-    <thead>
+<body style="text-align:center; padding-top:100px">
+<% 	
+	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); // for http 1.1. & above
+	response.setHeader("Pragma", "no-cache"); // Http 1.0
+	response.setHeader("Expires", "0"); // Proxies
+	if(session.getAttribute("admin")==null){
+		response.sendRedirect("AdminLogin.jsp");
+		return;
+	}
+%>
+All courses<br/><br/>
+<table width="100%" border="1">
+    <thead style="background-color : cyan">
     <tr>
         <td>Course ID</td>
         <td>Course Name</td>

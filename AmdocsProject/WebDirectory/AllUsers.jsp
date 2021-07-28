@@ -7,11 +7,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Users</title>
+<style>
+
+ tr:nth-child(even) {
+            background-color: Lightgreen;
+}
+</style>
 </head>
-<body>
-All Users
-<table width="60%" border="1">
-    <thead>
+<body style="text-align:center; padding-top:100px">
+<% 	
+	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
+	response.setHeader("Pragma", "no-cache"); 
+	response.setHeader("Expires", "0");
+	if(session.getAttribute("admin")==null){
+		response.sendRedirect("AdminLogin.jsp");
+		return;
+	}
+%>
+All Users <br/><br/>
+<table width="100%" border="1">
+    <thead style="background-color : cyan">
     <tr>
         <td>User ID</td>
         <td>Name</td>

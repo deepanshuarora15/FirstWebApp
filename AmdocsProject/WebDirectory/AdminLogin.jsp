@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body  style="text-align: center">
 	<form action="adminLogin" method="post" style="margin-top: 250px">
 	Admin Name <input type="text" name = "admin" required/> <br/>
 	Password <input type="password" name = "password" required/> <br/>

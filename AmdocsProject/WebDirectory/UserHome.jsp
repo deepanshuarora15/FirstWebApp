@@ -4,12 +4,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User Home</title>
 </head>
-<body>
+<body style="text-align: center; padding-top: 100px;">
 <% 	
+	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
+	response.setHeader("Pragma", "no-cache"); 
+	response.setHeader("Expires", "0");
+	if(session.getAttribute("user")==null){
+		response.sendRedirect("Login.jsp");
+		return;
+	}
+	out.println("<img src=\"https://bit.ly/3f1tbjy\" width=\"200\" height=\"200\" /><br/>");
 	out.println("Welcome " + ((User)session.getValue("user")).getName());
-	out.println("<img src=\"https://bit.ly/3zB3P3L\" width=\"200\" height=\"200\" />");
 %>
 	<br/>
 	<a href="Enroll.jsp">View & Enroll Courses</a><br/>

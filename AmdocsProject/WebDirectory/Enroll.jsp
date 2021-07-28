@@ -8,12 +8,28 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Enroll Courses</title>
+<style>
+
+ tr:nth-child(even) {
+            background-color: Lightgreen;
+}
+</style>
 </head>
-<body>
+<body style="text-align: center">
+<%
+	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
+	response.setHeader("Pragma", "no-cache"); 
+	response.setHeader("Expires", "0");
+	if(session.getAttribute("user")==null){
+		response.sendRedirect("Login.jsp");
+		return;
+	}
+	
+%>
 My Enrollments
-<table width="60%" border="1">
-    <thead>
+<table width="100%" border="1" style="margin-bottom:80px">
+    <thead style="background-color : cyan">
     <tr>
     	<td>Enrollment ID</td>
         <td>User ID</td>
@@ -50,8 +66,8 @@ My Enrollments
 </table>
 Enroll More below:
 <form action="enrolluser">
-<table width="60%" border="1">
-    <thead>
+<table width="100%" border="1">
+    <thead style="background-color : cyan">
     <tr>
         <td>Course ID</td>
         <td>Course Name</td>
@@ -80,7 +96,7 @@ Enroll More below:
     %>
     </tbody>
 </table>
-Enter the course ID you want to enroll<input type="number" name="courseId" required/>
+Enter the course ID you want to enroll <input type="number" name="courseId" required/>
 <input type="submit" value = "Submit"/>
 </form>
 </body>

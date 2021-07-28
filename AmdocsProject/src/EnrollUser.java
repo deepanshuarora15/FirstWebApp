@@ -41,6 +41,11 @@ public class EnrollUser extends HttpServlet {
 		Long courseid = Long.parseLong(request.getParameter("courseId"));
 		CourseDAO ob = new CourseDAOImpl();
 		Course obj = ob.getCourse(courseid);
+		PrintWriter out = response.getWriter();
+		if(obj==null) {
+			out.println("No such course exists!");
+			return;
+		}
 		HttpSession session = request.getSession();
 		Long userId  = ((User)session.getAttribute("user")).getUser_id();
 		String userName  = ((User)session.getAttribute("user")).getName();
@@ -49,15 +54,15 @@ public class EnrollUser extends HttpServlet {
 		String c_fees = obj.getC_fees();
 		String c_resource = obj.getC_resource();
 		EnrollmentDAO endao = new EnrollmentDAOImpl();
-		PrintWriter out = response.getWriter();
+		
 		if(endao.getEnrollmentByUserandCourseID(userId,courseid)) {
-			out.println("Already enrolled");
+			out.println("Already enrolled. Cannot enroll again");
 		}
 		else if(endao.addEnrollment(userId, userName, courseid, c_name, c_desp, c_fees, c_resource)) {
 			response.sendRedirect("Enroll.jsp");
 		}
 		else {
-			out.println("Something went wrong");
+			out.println("Oops! Something went wrong. Please try again");
 		}
 	}
 
